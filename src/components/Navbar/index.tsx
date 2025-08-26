@@ -1,13 +1,16 @@
 import styles from "./Navbar.module.css";
 import logo from "../../assets/logo-mimix.png";
+import { Link } from "react-router";
 
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
-      <img className={styles.logo} src={logo} alt="Logo" />
+      <Link to="/">
+        <img className={styles.logo} src={logo} alt="Logo" />
+      </Link>
       <div className={styles.navLinks}>
-        <a href="/">Favoritos</a>
-        <a href="/about">Chistes</a>
+        <Link to="/favorites">Favoritos</Link>
+        <Link to="jokes">Chistes</Link>
         <button>Inicio</button>
       </div>
     </nav>
