@@ -12,17 +12,12 @@
   width: auto;
 }
 
-.navLinks a {
-  margin-left: 20px;
+.navLinks .link {
   color: black;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 16px;
 }
 
-.navLinks a:hover {
-  text-decoration: none;
-}
-
-.navLinks button {
+.navLinks a {
   margin-left: 20px;
 }
