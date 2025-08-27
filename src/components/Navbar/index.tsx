@@ -1,13 +1,13 @@
 import styles from "./Navbar.module.css";
 import { Link } from "react-router";
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import LogoMixmix from "../LogoMixmix";
 
 const Navbar = () => {
   return (
-    <nav className={styles.navbar}>
+    <Box component="header" className={styles.navbar}>
       <LogoMixmix />
-      <div className={styles.navLinks}>
+      <Box component="div" className={styles.navLinks}>
         <Link className={styles.link} to="favorites">
           Favoritos
         </Link>
@@ -28,8 +28,8 @@ const Navbar = () => {
         >
           Inicio
         </Button>
-      </div>
-    </nav>
+      </Box>
+    </Box>
   );
 };
 
