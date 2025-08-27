@@ -1,14 +1,12 @@
 import styles from "./Navbar.module.css";
-import logo from "../../assets/logo-mimix.png";
 import { Link } from "react-router";
 import { Button } from "@mui/material";
+import LogoMixmix from "../LogoMixmix";
 
 const Navbar = () => {
   return (
     <nav className={styles.navbar}>
-      <Link to="/">
-        <img className={styles.logo} src={logo} alt="Logo" />
-      </Link>
+      <LogoMixmix />
       <div className={styles.navLinks}>
         <Link className={styles.link} to="favorites">
           Favoritos
