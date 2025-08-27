@@ -1,16 +1,19 @@
-import styles from "./Footer.module.css";
 import LogoMixmix from "../LogoMixmix";
+import { Box, Container, Typography } from "@mui/material";
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.container}>
+    <Box
+      component="footer"
+      sx={{ backgroundColor: "#f7f7f7", color: "black", marginTop: "auto" }}
+    >
+      <Container maxWidth="lg" sx={{ paddingY: "2rem" }}>
         <LogoMixmix />
-        <p className={styles.rightsReserved}>
+        <Typography variant="body2">
           © {new Date().getFullYear()} MixMix - Todos los derechos reservados
-        </p>
-      </div>
-    </footer>
+        </Typography>
+      </Container>
+    </Box>
   );
 };
 
