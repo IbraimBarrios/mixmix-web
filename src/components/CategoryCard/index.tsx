@@ -27,7 +27,7 @@ const CategoryCard = ({ alt, src, categoryName }: CategoryParams) => {
           }}
         />
       </Box>
-      <Typography variant="subtitle1" fontWeight="bold" align="left">
+      <Typography variant="subtitle1" fontWeight="bold" align="left" paddingY={1}>
         {categoryName}
       </Typography>
     </Box>
