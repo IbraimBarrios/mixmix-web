@@ -1,12 +1,10 @@
-import {
-  Box,
-  Button,
-  Grid,
-  Stack,
-  Typography,
-} from "@mui/material";
-import SquareImage from "../../components/SquareImage";
+import { useEffect, useMemo } from "react";
+import { Box, Grid, Typography } from "@mui/material";
 import CategoryCard from "../../components/CategoryCard";
+import CocktailRandom from "../../components/CocktailRandom";
+import { API_BASE_V1 } from "../../utils/constants";
+import type { Cocktail } from "../../types/cocktail";
+import useCocktailData from "../../hooks/useCocktailsData";
 
 const categories = [
   {
@@ -36,44 +34,23 @@ const categories = [
   },
 ];
 
+type CocktailAPIResponse = {
+  drinks: Cocktail[];
+};
+
 const Home = () => {
+  const { data, error, isLoading, fetchData } =
+    useCocktailData<CocktailAPIResponse>();
+
+  useEffect(() => {
+    fetchData(`${API_BASE_V1}/random.php`);
+  }, []);
+
+  const cocktail = useMemo(() => data?.drinks?.[0] || null, [data]);
+
   return (
     <Box>
-      <Stack direction={{ xs: "column", sm: "row" }} spacing={{ xs: 4, sm: 2 }}>
-        <Box flex={1}>
-          <SquareImage
-            alt="mojito"
-            src="https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg"
-            size={{ xs: 320, sm: 320, md: 400 }}
-          />
-        </Box>
-        <Box flex={1}>
-          <Stack direction="column" spacing={2}>
-            <Typography variant="h5" fontWeight="bold">
-              Mojito
-            </Typography>
-            <Typography variant="body2" color="textSecondary">
-              Cocktail
-            </Typography>
-            <Typography variant="body2" color="textSecondary">
-              Mezcle las hojas de menta con el azúcar y el zumo de lima. Añada
-              un chorrito de soda y llene el vaso con hielo picado. Verter el
-              ron y completar con soda. Decorar y servir con pajita.
-            </Typography>
-            <Button
-              variant="contained"
-              sx={{
-                backgroundColor: "black",
-                color: "white",
-                textTransform: "none",
-                fontSize: 16,
-              }}
-            >
-              Ver detalle
-            </Button>
-          </Stack>
-        </Box>
-      </Stack>
+      <CocktailRandom cocktail={cocktail} loading={isLoading} error={error} />
       <Box paddingY="2rem">
         <Box paddingBottom="1rem">
           <Typography variant="h6" fontWeight="bold">
