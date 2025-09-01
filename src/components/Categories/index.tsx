@@ -6,11 +6,22 @@ import Other from "../../assets/other.png";
 import { useMemo } from "react";
 import SkeletonCategories from "../../skeletons/SkeletonCategories";
 import EmptyResultsMessage from "../EmptyResultsMessage";
+import RequestErrorMessage from "../RequestErrorMessage";
 
 type CategoriesProps = {
   categories: Category[];
   loading: boolean;
   error: Error | unknown;
+};
+
+const CategoryTitle = () => {
+  return (
+    <Box paddingBottom="1rem">
+      <Typography variant="h6" fontWeight="bold">
+        Categorias
+      </Typography>
+    </Box>
+  );
 };
 
 const Categories = ({ categories, loading, error }: CategoriesProps) => {
@@ -32,15 +43,17 @@ const Categories = ({ categories, loading, error }: CategoriesProps) => {
   }, [visibleCategories]);
 
   if (loading) return <SkeletonCategories />;
-  if (error) return <Typography color="error">Error al cargar</Typography>;
+  if (error)
+    return (
+      <>
+        <CategoryTitle />
+        <RequestErrorMessage text="Error de solicitud de categoría" />
+      </>
+    );
 
   return (
     <>
-      <Box paddingBottom="1rem">
-        <Typography variant="h6" fontWeight="bold">
-          Categorias
-        </Typography>
-      </Box>
+      <CategoryTitle />
       {categories.length != 0 ? (
         <Box sx={{ flexGrow: 1 }}>
           <Grid
