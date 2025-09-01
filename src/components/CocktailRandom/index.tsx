@@ -3,6 +3,7 @@ import SquareImage from "../SquareImage";
 import type { Cocktail } from "../../types/cocktail";
 import { SkeletonCocktailRandom } from "../../skeletons";
 import EmptyResultsMessage from "../EmptyResultsMessage";
+import RequestErrorMessage from "../RequestErrorMessage";
 
 type CocktailRandom = {
   cocktail: Cocktail | null;
@@ -12,7 +13,8 @@ type CocktailRandom = {
 
 const CocktailRandom = ({ cocktail, loading, error }: CocktailRandom) => {
   if (loading) return <SkeletonCocktailRandom />;
-  if (error) return <Typography color="error">Error al cargar</Typography>;
+  if (error)
+    return <RequestErrorMessage text="Error de solicitud de cocktail" />;
   if (!cocktail)
     return <EmptyResultsMessage text="No se encontró ningún cóctel" />;
 
