@@ -32,8 +32,6 @@ const Categories = ({ categories, loading, error }: CategoriesProps) => {
 
   if (loading) return <SkeletonCategories />;
   if (error) return <Typography color="error">Error al cargar</Typography>;
-  if (!categories)
-    return <Typography>No se encontraron catefgorias</Typography>;
 
   return (
     <>
@@ -42,23 +40,27 @@ const Categories = ({ categories, loading, error }: CategoriesProps) => {
           Categorias
         </Typography>
       </Box>
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid
-          container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
-        >
-          {resolvedCategories.map((item, index) => (
-            <Grid key={index} size={{ xs: 2, sm: 4, md: 4 }}>
-              <CategoryCard
-                alt={item.strCategory}
-                src={item.src}
-                categoryName={item.strCategory}
-              />
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
+      {categories.length != 0 ? (
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid
+            container
+            spacing={{ xs: 2, md: 3 }}
+            columns={{ xs: 4, sm: 8, md: 12 }}
+          >
+            {resolvedCategories.map((item, index) => (
+              <Grid key={index} size={{ xs: 2, sm: 4, md: 4 }}>
+                <CategoryCard
+                  alt={item.strCategory}
+                  src={item.src}
+                  categoryName={item.strCategory}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      ) : (
+        <Typography>No se encontraron catefgorias</Typography>
+      )}
     </>
   );
 };
