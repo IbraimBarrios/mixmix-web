@@ -5,6 +5,7 @@ import { All_CATEGORIES } from "../../utils/categories";
 import Other from "../../assets/other.png";
 import { useMemo } from "react";
 import SkeletonCategories from "../../skeletons/SkeletonCategories";
+import EmptyResultsMessage from "../EmptyResultsMessage";
 
 type CategoriesProps = {
   categories: Category[];
@@ -59,7 +60,7 @@ const Categories = ({ categories, loading, error }: CategoriesProps) => {
           </Grid>
         </Box>
       ) : (
-        <Typography>No se encontraron catefgorias</Typography>
+        <EmptyResultsMessage text="No se encontraron categorias" />
       )}
     </>
   );

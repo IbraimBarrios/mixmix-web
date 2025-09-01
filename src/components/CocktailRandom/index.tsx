@@ -2,6 +2,7 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import SquareImage from "../SquareImage";
 import type { Cocktail } from "../../types/cocktail";
 import { SkeletonCocktailRandom } from "../../skeletons";
+import EmptyResultsMessage from "../EmptyResultsMessage";
 
 type CocktailRandom = {
   cocktail: Cocktail | null;
@@ -12,7 +13,8 @@ type CocktailRandom = {
 const CocktailRandom = ({ cocktail, loading, error }: CocktailRandom) => {
   if (loading) return <SkeletonCocktailRandom />;
   if (error) return <Typography color="error">Error al cargar</Typography>;
-  if (!cocktail) return <Typography>No se encontró ningún cóctel</Typography>;
+  if (!cocktail)
+    return <EmptyResultsMessage text="No se encontró ningún cóctel" />;
 
   return (
     <Stack direction={{ xs: "column", sm: "row" }} spacing={{ xs: 4, sm: 2 }}>
