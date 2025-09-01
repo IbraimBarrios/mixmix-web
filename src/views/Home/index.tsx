@@ -42,8 +42,6 @@ const Home = () => {
     [categoriesData]
   );
 
-  console.log(allCategories);
-
   return (
     <Box>
       <CocktailRandom
