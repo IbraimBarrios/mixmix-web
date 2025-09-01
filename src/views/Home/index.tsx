@@ -5,6 +5,7 @@ import CocktailRandom from "../../components/CocktailRandom";
 import { API_BASE_V1 } from "../../utils/constants";
 import type { Cocktail } from "../../types/cocktail";
 import useCocktailData from "../../hooks/useCocktailsData";
+import type { Category } from "../../types/category";
 
 const categories = [
   {
@@ -38,22 +39,49 @@ type CocktailAPIResponse = {
   drinks: Cocktail[];
 };
 
+type CategoriesAPIResponse = {
+  drinks: Category[];
+};
+
 const Home = () => {
-  const { data, error, isLoading, fetchData } =
-    useCocktailData<CocktailAPIResponse>();
+  const {
+    data: randomData,
+    error: randomError,
+    isLoading: isLoadingRandom,
+    fetchData: fetchRandom,
+  } = useCocktailData<CocktailAPIResponse>();
+
+  const {
+    data: categoriesData,
+    error: categoriesError,
+    isLoading: isLoadingCategories,
+    fetchData: fetchCategories,
+  } = useCocktailData<CategoriesAPIResponse>();
 
   useEffect(() => {
-    fetchData(`${API_BASE_V1}/random.php`);
+    fetchRandom(`${API_BASE_V1}/random.php`);
+    fetchCategories(`${API_BASE_V1}/list.php?c=list`);
   }, []);
 
-  const cocktail = useMemo(() => data?.drinks?.[0] || null, [data]);
+  const cocktail = useMemo(() => randomData?.drinks?.[0] || null, [randomData]);
+
+  const allCategories = useMemo(
+    () => categoriesData?.drinks || [],
+    [categoriesData]
+  );
+
+  console.log(allCategories);
 
   return (
     <Box>
-      <CocktailRandom cocktail={cocktail} loading={isLoading} error={error} />
+      <CocktailRandom
+        cocktail={cocktail}
+        loading={isLoadingRandom}
+        error={randomError}
+      />
       <Box paddingY="2rem">
         <Box paddingBottom="1rem">
-          <Typography variant="h6" fontWeight="bold">
+          <Typography variant="h5" fontWeight="bold">
             Categorias
           </Typography>
         </Box>
