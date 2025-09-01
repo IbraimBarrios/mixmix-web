@@ -54,7 +54,7 @@ const Home = () => {
       <Box paddingY="2rem">
         <Categories
           categories={allCategories}
-          lading={isLoadingCategories}
+          loading={isLoadingCategories}
           error={categoriesError}
         />
       </Box>

@@ -4,14 +4,15 @@ import type { Category } from "../../types/category";
 import { All_CATEGORIES } from "../../utils/categories";
 import Other from "../../assets/other.png";
 import { useMemo } from "react";
+import SkeletonCategories from "../../skeletons/SkeletonCategories";
 
 type CategoriesProps = {
   categories: Category[];
-  lading: boolean;
+  loading: boolean;
   error: Error | unknown;
 };
 
-const Categories = ({ categories }: CategoriesProps) => {
+const Categories = ({ categories, loading, error }: CategoriesProps) => {
   const visibleCategories = useMemo(() => categories.slice(0, 6), [categories]);
 
   const resolvedCategories = useMemo(() => {
@@ -28,6 +29,11 @@ const Categories = ({ categories }: CategoriesProps) => {
 
     return categories;
   }, [visibleCategories]);
+
+  if (loading) return <SkeletonCategories />;
+  if (error) return <Typography color="error">Error al cargar</Typography>;
+  if (!categories)
+    return <Typography>No se encontraron catefgorias</Typography>;
 
   return (
     <>
