@@ -6,7 +6,6 @@ const useScroll = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 0);
-      console.log(window.scrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
