@@ -36,7 +36,7 @@ const Navbar = () => {
               backgroundColor: "black",
               color: "white",
               textTransform: "none",
-              fontSize: 16,
+              fontSize: "1rem",
             }}
           >
             Inicio
