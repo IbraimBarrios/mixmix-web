@@ -6,6 +6,7 @@ import type { Cocktail } from "../../types/cocktail";
 import useCocktailData from "../../hooks/useCocktailsData";
 import type { Category } from "../../types/category";
 import Categories from "../../components/Categories";
+import { useNavigate } from "react-router";
 
 type CocktailAPIResponse = {
   drinks: Cocktail[];
@@ -16,6 +17,9 @@ type CategoriesAPIResponse = {
 };
 
 const Home = () => {
+
+  const navigate = useNavigate();
+
   const {
     data: randomData,
     error: randomError,
@@ -42,12 +46,17 @@ const Home = () => {
     [categoriesData]
   );
 
+  const handleDrinkClick = (id: string) =>{
+    navigate(`drink/${id}`);
+  };
+
   return (
     <Box>
       <CocktailRandom
         cocktail={cocktail}
         loading={isLoadingRandom}
         error={randomError}
+        onDrinkClick={handleDrinkClick}
       />
       <Box paddingY="2rem">
         <Categories

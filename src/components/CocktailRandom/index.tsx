@@ -9,9 +9,21 @@ type CocktailRandom = {
   cocktail: Cocktail | null;
   loading: boolean;
   error: Error | unknown;
+  onDrinkClick: (id: string) => void;
 };
 
-const CocktailRandom = ({ cocktail, loading, error }: CocktailRandom) => {
+const CocktailRandom = ({
+  cocktail,
+  loading,
+  error,
+  onDrinkClick,
+}: CocktailRandom) => {
+  const handleSeeDetailsClick = () => {
+    if (cocktail) {
+      onDrinkClick(cocktail.idDrink);
+    }
+  };
+
   if (loading) return <SkeletonCocktailRandom />;
   if (error)
     return <RequestErrorMessage text="Error de solicitud de cocktail" />;
@@ -39,6 +51,7 @@ const CocktailRandom = ({ cocktail, loading, error }: CocktailRandom) => {
             {cocktail.strInstructionsES}
           </Typography>
           <Button
+            onClick={handleSeeDetailsClick}
             variant="contained"
             sx={{
               backgroundColor: "black",
