@@ -17,7 +17,6 @@ type CategoriesAPIResponse = {
 };
 
 const Home = () => {
-
   const navigate = useNavigate();
 
   const {
@@ -46,7 +45,7 @@ const Home = () => {
     [categoriesData]
   );
 
-  const handleDrinkClick = (id: string) =>{
+  const handleDrinkClick = (id: string) => {
     navigate(`drink/${id}`);
   };
 
@@ -58,7 +57,7 @@ const Home = () => {
         error={randomError}
         onDrinkClick={handleDrinkClick}
       />
-      <Box paddingY="2rem">
+      <Box>
         <Categories
           categories={allCategories}
           loading={isLoadingCategories}
