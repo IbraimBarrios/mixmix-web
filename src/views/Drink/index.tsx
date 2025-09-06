@@ -8,6 +8,7 @@ import type { Drink } from "../../types/drink";
 import EmptyResultsMessage from "../../components/EmptyResultsMessage";
 import RequestErrorMessage from "../../components/RequestErrorMessage";
 import { lowerCaseText } from "../../utils/utils";
+import SkeletonDrink from "../../skeletons/SkeletonDrink";
 
 type Ingredient = {
   measure: string;
@@ -47,7 +48,7 @@ const Drink = () => {
 
   const drink = useMemo(() => data?.drinks[0] || null, [data?.drinks]);
 
-  if (isLoading) return <Box>Cargando...</Box>;
+  if (isLoading) return <SkeletonDrink />;
   if (error) return <RequestErrorMessage text="Error al solicitar bebida " />;
   if (!drink)
     return <EmptyResultsMessage text="No se encontró ningúna bebida" />;
