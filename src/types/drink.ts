@@ -6,6 +6,7 @@ export interface Drink {
   strInstructions: string;
   strInstructionsES: string;
   strDrinkThumb: string;
+  strGlass: string;
   strIngredient1: string | null;
   strIngredient2: string | null;
   strIngredient3: string | null;

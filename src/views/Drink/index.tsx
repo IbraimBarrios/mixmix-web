@@ -53,57 +53,76 @@ const Drink = () => {
     return <EmptyResultsMessage text="No se encontró ningúna bebida" />;
 
   return (
-    <Box display="flex" flexDirection={{ xs: "column", md: "row" }} gap={4}>
-      <Box flex={1}>
-        <Stack direction="column" spacing={1}>
-          <Typography component="h1" variant="h4" fontWeight="bold">
-            {drink?.strDrink}
-          </Typography>
-          <Stack
-            direction="row"
-            sx={{ alignItems: "center", justifyContent: "space-between" }}
-          >
-            <Typography variant="body2" color="text.secondary">
-              {drink?.strAlcoholic === "Alcoholic"
-                ? "Alcohólico"
-                : "Sin alcohol"}
+    <Box>
+      <Box display="flex" flexDirection={{ xs: "column", md: "row" }} gap={4}>
+        <Box flex={1}>
+          <Stack direction="column" spacing={1}>
+            <Typography component="h1" variant="h4" fontWeight="bold">
+              {drink?.strDrink}
             </Typography>
-            <Chip label={drink?.strCategory} sx={{ fontSize: "0.875rem" }} />
-          </Stack>
-          <Typography variant="h5">Ingredientes</Typography>
-          <Box sx={{ flexGrow: 1 }}>
-            <Grid
-              container
-              spacing={{ xs: 2, md: 3 }}
-              columns={{ xs: 4, sm: 8, md: 12 }}
+            <Stack
+              direction="row"
+              sx={{ alignItems: "center", justifyContent: "space-between" }}
             >
-              {getIngredients(drink).map((item, index) => (
-                <Grid key={index} size={{ xs: 2, sm: 4, md: 4 }}>
-                  <Stack direction="row" sx={{ alignItems: "center" }}>
-                    <Avatar
-                      alt={item.ingredient}
-                      src={`${URL_IMAGES}/ingredients/${lowerCaseText(
-                        item.ingredient
-                      )}-medium.png`}
-                    />
-                    <Typography>
-                      {item.measure} {item.ingredient}
-                    </Typography>
-                  </Stack>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
-        </Stack>
-      </Box>
+              <Typography variant="body2" color="text.secondary">
+                {drink?.strAlcoholic === "Alcoholic"
+                  ? "Alcohólico"
+                  : "Sin alcohol"}
+              </Typography>
+              <Chip label={drink?.strCategory} sx={{ fontSize: "0.875rem" }} />
+            </Stack>
+            <Typography variant="h6">Ingredientes</Typography>
+            <Box sx={{ flexGrow: 1 }}>
+              <Grid
+                container
+                spacing={{ xs: 2, md: 3 }}
+                columns={{ xs: 4, sm: 8, md: 12 }}
+              >
+                {getIngredients(drink).map((item, index) => (
+                  <Grid key={index} size={{ xs: 2, sm: 4, md: 4 }}>
+                    <Stack direction="row" sx={{ alignItems: "center" }}>
+                      <Avatar
+                        alt={item.ingredient}
+                        src={`${URL_IMAGES}/ingredients/${lowerCaseText(
+                          item.ingredient
+                        )}-medium.png`}
+                      />
+                      <Typography variant="body1">
+                        {item.measure} {item.ingredient}
+                      </Typography>
+                    </Stack>
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+          </Stack>
+        </Box>
 
-      <Box flex={1}>
-        <SquareImage
-          alt={drink?.strDrink || "image"}
-          src={drink?.strDrinkThumb || ""}
-          size={{ xs: 320, sm: 320, md: 400 }}
-        />
+        <Box
+          flex={1}
+          justifyContent={{ sx: "center", md: "start" }}
+          sx={{
+            display: "flex",
+            justifyContent: { xs: "center", md: "flex-start" },
+          }}
+        >
+          <SquareImage
+            alt={drink?.strDrink || "image"}
+            src={drink?.strDrinkThumb || ""}
+            size={{ xs: 320, sm: 320, md: 400 }}
+          />
+        </Box>
       </Box>
+      <Stack direction="column" spacing={2}>
+        <Box paddingTop={{ xs: "1rem", md: 0 }}>
+          <Typography variant="h6">Instruciones</Typography>
+          <Typography variant="body1">{drink?.strInstructionsES}</Typography>
+        </Box>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="h6">Vaso: </Typography>
+          <Typography variant="body1">{drink?.strGlass}</Typography>
+        </Box>
+      </Stack>
     </Box>
   );
 };

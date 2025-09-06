@@ -8,7 +8,7 @@ const Layout = () => {
     <Box display="flex" flexDirection="column" minHeight="100vh">
       <Navbar />
       <Box component="main" flex={1}>
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" sx={{ paddingY: "2rem" }}>
           <Outlet />
         </Container>
       </Box>
