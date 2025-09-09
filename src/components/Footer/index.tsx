@@ -69,6 +69,12 @@ const Footer = () => {
                   Inicio
                 </Link>
                 <Link
+                  to="categories"
+                  style={{ color: "black", textDecoration: "none" }}
+                >
+                  Categories
+                </Link>
+                <Link
                   to="favorites"
                   style={{ color: "black", textDecoration: "none" }}
                 >
