@@ -27,9 +27,6 @@ const Navbar = () => {
           <Link className={styles.link} to="favorites">
             Favoritos
           </Link>
-          <Link className={styles.link} to="jokes">
-            Chistes
-          </Link>
           <Button
             variant="contained"
             size="small"

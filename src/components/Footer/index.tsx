@@ -74,12 +74,6 @@ const Footer = () => {
                 >
                   Favoritos
                 </Link>
-                <Link
-                  to="jokes"
-                  style={{ color: "black", textDecoration: "none" }}
-                >
-                  Chistes
-                </Link>
               </Stack>
             </Stack>
           </Box>
