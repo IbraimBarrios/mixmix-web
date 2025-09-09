@@ -15,7 +15,7 @@ const Navbar = () => {
         top: 0,
         zIndex: 10,
         transition: "border-bottom 0.2s ease",
-        borderBottom: scrolled ? "1px solid rgb(221, 221, 221)" : "none",
+        borderBottom: scrolled ? "1px solid rgb(221, 221, 221)" : "transparent",
       }}
     >
       <Box className={styles.navbarContainer}>
