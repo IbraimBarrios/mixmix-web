@@ -21,6 +21,9 @@ const Navbar = () => {
       <Box className={styles.navbarContainer}>
         <LogoMixmix />
         <Box component="div" className={styles.navLinks}>
+          <Link className={styles.link} to="categories">
+            Categorias
+          </Link>
           <Link className={styles.link} to="favorites">
             Favoritos
           </Link>

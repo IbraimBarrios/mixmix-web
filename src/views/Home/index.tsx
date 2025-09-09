@@ -62,6 +62,7 @@ const Home = () => {
           categories={allCategories}
           loading={isLoadingCategories}
           error={categoriesError}
+          resultsLimit={6}
         />
       </Box>
     </Box>
