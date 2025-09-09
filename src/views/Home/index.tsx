@@ -57,7 +57,7 @@ const Home = () => {
         error={randomError}
         onDrinkClick={handleDrinkClick}
       />
-      <Box>
+      <Box marginTop="2rem">
         <Categories
           categories={allCategories}
           loading={isLoadingCategories}
