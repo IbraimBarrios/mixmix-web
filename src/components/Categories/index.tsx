@@ -12,6 +12,7 @@ type CategoriesProps = {
   categories: Category[];
   loading: boolean;
   error: Error | unknown;
+  resultsLimit?: number;
 };
 
 const CategoryTitle = () => {
@@ -24,8 +25,19 @@ const CategoryTitle = () => {
   );
 };
 
-const Categories = ({ categories, loading, error }: CategoriesProps) => {
-  const visibleCategories = useMemo(() => categories.slice(0, 6), [categories]);
+const Categories = ({
+  categories,
+  loading,
+  error,
+  resultsLimit,
+}: CategoriesProps) => {
+  const visibleCategories = useMemo(() => {
+    if (!resultsLimit) {
+      return categories;
+    }
+
+    return categories.slice(0, resultsLimit);
+  }, [categories, resultsLimit]);
 
   const resolvedCategories = useMemo(() => {
     const categories = visibleCategories.map((category) => {

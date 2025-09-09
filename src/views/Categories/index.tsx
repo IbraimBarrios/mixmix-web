@@ -18,7 +18,6 @@ const AllCategories = () => {
   }, []);
 
   const allCategories = useMemo(() => data?.drinks || [], [data]);
-  console.log(data);
 
   return (
     <Box>
