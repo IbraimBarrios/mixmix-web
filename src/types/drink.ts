@@ -4,7 +4,7 @@ export interface Drink {
   strCategory: string;
   strAlcoholic: string;
   strInstructions: string;
-  strInstructionsES: string;
+  strInstructionsES: string | null;
   strDrinkThumb: string;
   strGlass: string;
   strIngredient1: string | null;
