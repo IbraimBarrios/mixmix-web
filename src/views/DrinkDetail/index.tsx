@@ -37,7 +37,7 @@ const getIngredients = (drink: Drink) => {
   return ingredients;
 };
 
-const Drink = () => {
+const DrinkDetail = () => {
   const { drinkId } = useParams();
   const { data, isLoading, error, fetchData } =
     useCocktailData<DrinkResponse>();
@@ -132,4 +132,4 @@ const Drink = () => {
   );
 };
 
-export default Drink;
+export default DrinkDetail;
