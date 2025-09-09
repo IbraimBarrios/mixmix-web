@@ -1,54 +1,54 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import SquareImage from "../SquareImage";
-import type { Cocktail } from "../../types/cocktail";
 import { SkeletonCocktailRandom } from "../../skeletons";
 import EmptyResultsMessage from "../EmptyResultsMessage";
 import RequestErrorMessage from "../RequestErrorMessage";
+import type { Drink } from "../../types/drink";
 
 type CocktailRandom = {
-  cocktail: Cocktail | null;
+  drink: Drink | null;
   loading: boolean;
   error: Error | unknown;
   onDrinkClick: (id: string) => void;
 };
 
 const CocktailRandom = ({
-  cocktail,
+  drink,
   loading,
   error,
   onDrinkClick,
 }: CocktailRandom) => {
   const handleSeeDetailsClick = () => {
-    if (cocktail) {
-      onDrinkClick(cocktail.idDrink);
+    if (drink) {
+      onDrinkClick(drink.idDrink);
     }
   };
 
   if (loading) return <SkeletonCocktailRandom />;
   if (error)
     return <RequestErrorMessage text="Error de solicitud de cocktail" />;
-  if (!cocktail)
+  if (!drink)
     return <EmptyResultsMessage text="No se encontró ningún cóctel" />;
 
   return (
     <Stack direction={{ xs: "column", sm: "row" }} spacing={{ xs: 4, sm: 2 }}>
       <Box flex={1}>
         <SquareImage
-          alt={cocktail.strDrink}
-          src={cocktail.strDrinkThumb}
+          alt={drink.strDrink}
+          src={drink.strDrinkThumb}
           size={{ xs: 320, sm: 320, md: 400 }}
         />
       </Box>
       <Box flex={1}>
         <Stack direction="column" spacing={2}>
           <Typography variant="h5" fontWeight="bold">
-            {cocktail.strDrink}
+            {drink.strDrink}
           </Typography>
           <Typography variant="body2" color="textSecondary">
-            {cocktail.strCategory}
+            {drink.strCategory}
           </Typography>
           <Typography variant="body2" color="textSecondary">
-            {cocktail.strInstructionsES}
+            {drink.strInstructionsES}
           </Typography>
           <Button
             onClick={handleSeeDetailsClick}
