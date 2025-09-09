@@ -117,7 +117,11 @@ const Drink = () => {
       <Stack direction="column" spacing={2}>
         <Box paddingTop={{ xs: "1rem", md: 0 }}>
           <Typography variant="h6">Instruciones</Typography>
-          <Typography variant="body1">{drink?.strInstructionsES}</Typography>
+          {drink?.strInstructionsES ? (
+            <Typography variant="body1">{drink?.strInstructionsES}</Typography>
+          ) : (
+            <Typography variant="body1">Sin instruciones</Typography>
+          )}
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <Typography variant="h6">Vaso: </Typography>
