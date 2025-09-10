@@ -3,11 +3,24 @@ type CategoryParams = {
   alt: string;
   src: string;
   categoryName: string;
+  onCategoryClick: (name: string) => void;
 };
 
-const CategoryCard = ({ alt, src, categoryName }: CategoryParams) => {
+const CategoryCard = ({
+  alt,
+  src,
+  categoryName,
+  onCategoryClick,
+}: CategoryParams) => {
+  const handleSeeCategoryClick = () => {
+    onCategoryClick(categoryName);
+  };
+
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box
+      sx={{ width: "100%", cursor: "pointer" }}
+      onClick={handleSeeCategoryClick}
+    >
       <Box
         sx={{
           width: "100%",
@@ -27,7 +40,12 @@ const CategoryCard = ({ alt, src, categoryName }: CategoryParams) => {
           }}
         />
       </Box>
-      <Typography variant="subtitle1" fontWeight="bold" align="left" paddingY={1}>
+      <Typography
+        variant="subtitle1"
+        fontWeight="bold"
+        align="left"
+        paddingY={1}
+      >
         {categoryName}
       </Typography>
     </Box>
