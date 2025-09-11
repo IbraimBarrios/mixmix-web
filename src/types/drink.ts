@@ -38,3 +38,9 @@ export interface Drink {
   strMeasure14: string | null;
   strMeasure15: string | null;
 }
+
+export interface DrinkCategory {
+  idDrink: string;
+  strDrink: string;
+  strDrinkThumb: string;
+}
