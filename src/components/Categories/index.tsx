@@ -1,4 +1,5 @@
 import { Box, Grid, Typography } from "@mui/material";
+import { useNavigate } from "react-router";
 import CategoryCard from "../CategoryCard";
 import type { Category } from "../../types/category";
 import { All_CATEGORIES } from "../../utils/categories";
@@ -31,6 +32,8 @@ const Categories = ({
   error,
   resultsLimit,
 }: CategoriesProps) => {
+  const navigate = useNavigate();
+
   const visibleCategories = useMemo(() => {
     if (!resultsLimit) {
       return categories;
@@ -53,6 +56,10 @@ const Categories = ({
 
     return categories;
   }, [visibleCategories]);
+
+  const handleCategoryClick = (name: string) => {
+    navigate(`/categories/${encodeURIComponent(name)}`);
+  };
 
   if (loading) return <SkeletonCategories />;
   if (error)
@@ -79,6 +86,7 @@ const Categories = ({
                   alt={item.strCategory}
                   src={item.src}
                   categoryName={item.strCategory}
+                  onCategoryClick={handleCategoryClick}
                 />
               </Grid>
             ))}

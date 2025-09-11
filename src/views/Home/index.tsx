@@ -46,7 +46,7 @@ const Home = () => {
   );
 
   const handleDrinkClick = (id: string) => {
-    navigate(`drink/${id}`);
+    navigate(`/drink/${id}`);
   };
 
   return (
