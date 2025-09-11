@@ -10,7 +10,11 @@ const Category = () => {
   const { data, isLoading, error, fetchData } = useCocktailData();
 
   useEffect(() => {
-    fetchData(`${API_BASE_V1}/filter.php?c=${categoryName}`);
+    if (categoryName) {
+      fetchData(
+        `${API_BASE_V1}/filter.php?c=${encodeURIComponent(categoryName)}`
+      );
+    }
   }, []);
 
   return (
