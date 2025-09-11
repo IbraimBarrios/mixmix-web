@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import useCocktailData from "../../hooks/useCocktailsData";
 import { API_BASE_V1 } from "../../utils/constants";
 import { useParams } from "react-router";
-import { underscoresToSpaces } from "../../utils/utils";
 
 const Category = () => {
   const { categoryName } = useParams();
@@ -24,7 +23,7 @@ const Category = () => {
         }}
       >
         <Typography color="white" fontSize="1.5rem">
-          {categoryName ? underscoresToSpaces(categoryName) : null}
+          {categoryName}
         </Typography>
       </Box>
     </Box>

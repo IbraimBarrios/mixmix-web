@@ -58,7 +58,7 @@ const Categories = ({
   }, [visibleCategories]);
 
   const handleCategoryClick = (name: string) => {
-    navigate(`/categories/${name}`);
+    navigate(`/categories/${encodeURIComponent(name)}`);
   };
 
   if (loading) return <SkeletonCategories />;
