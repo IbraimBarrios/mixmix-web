@@ -5,6 +5,7 @@ import { API_BASE_V1 } from "../../utils/constants";
 import { useParams } from "react-router";
 import type { DrinkCategory } from "../../types/drink";
 import DrinkCard from "../../components/DrinkCard";
+import TopBanner from "../../components/TopBanner";
 
 type CategoryResponse = {
   drinks: DrinkCategory[];
@@ -27,17 +28,7 @@ const Category = () => {
 
   return (
     <Box>
-      <Box
-        sx={{
-          backgroundColor: "rgb(9, 43, 73)",
-          padding: "1rem",
-          borderRadius: "12px",
-        }}
-      >
-        <Typography color="white" fontSize="1.5rem">
-          {categoryName}
-        </Typography>
-      </Box>
+      <TopBanner title={categoryName || ""}/>
       <Box marginTop="2rem" marginBottom="1rem">
         <Typography component="h1" variant="h6">
           {" "}
