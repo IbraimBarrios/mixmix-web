@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useCallback } from "react";
 import { Box } from "@mui/material";
 import CocktailRandom from "../../components/CocktailRandom";
 import { API_BASE_V1 } from "../../utils/constants";
@@ -45,9 +45,12 @@ const Home = () => {
     [categoriesData]
   );
 
-  const handleDrinkClick = (id: string) => {
-    navigate(`/drink/${id}`);
-  };
+  const handleDrinkClick = useCallback(
+    (id: string) => {
+      navigate(`/drink/${id}`);
+    },
+    [navigate]
+  );
 
   return (
     <Box>
