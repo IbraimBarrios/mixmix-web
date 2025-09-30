@@ -1,15 +1,22 @@
 import { Box, Typography } from "@mui/material";
 
 type DrinkCardParams = {
+  id: string;
   src: string;
   alt: string;
   name: string;
+  onDrinkClick: (id: string) => void;
 };
 
-const DrinkCard = ({src, alt, name}: DrinkCardParams) => {
-  return(
+const DrinkCard = ({ id, src, alt, name, onDrinkClick }: DrinkCardParams) => {
+  const handleSeeDrinkClick = () => {
+    onDrinkClick(id);
+  };
+
+  return (
     <Box
-      sx={{ width: "100%"}}
+      sx={{ width: "100%", cursor: "pointer" }}
+      onClick={handleSeeDrinkClick}
     >
       <Box
         sx={{
