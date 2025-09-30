@@ -72,7 +72,7 @@ const Footer = () => {
                   to="categories"
                   style={{ color: "black", textDecoration: "none" }}
                 >
-                  Categories
+                  Categorias
                 </Link>
                 <Link
                   to="favorites"
