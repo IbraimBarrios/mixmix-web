@@ -37,6 +37,9 @@ const Navbar = () => {
               color: "white",
               textTransform: "none",
               fontSize: "1rem",
+              "&:focus": {
+                color: "white",
+              },
             }}
           >
             Inicio
