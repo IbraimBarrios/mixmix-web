@@ -40,6 +40,9 @@ const Navbar = () => {
               "&:focus": {
                 color: "white",
               },
+              "&:active": {
+                color: "white",
+              },
             }}
           >
             Inicio
