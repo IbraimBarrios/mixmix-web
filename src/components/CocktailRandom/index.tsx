@@ -34,6 +34,7 @@ const CocktailRandom = ({
     <Stack direction={{ xs: "column", sm: "row" }} spacing={{ xs: 4, sm: 2 }}>
       <Box flex={1}>
         <SquareImage
+          id={drink.idDrink}
           alt={drink.strDrink}
           src={drink.strDrinkThumb}
           size={{ xs: 320, sm: 320, md: 400 }}

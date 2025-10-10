@@ -1,12 +1,14 @@
 import { Box } from "@mui/material";
+import FavoriteButton from "../FavoriteButton";
 
 type ImageParams = {
+  id: string;
   src: string;
   alt: string;
   size: number | object;
 };
 
-const SquareImage = ({ src, alt, size }: ImageParams) => {
+const SquareImage = ({ id, src, alt, size }: ImageParams) => {
   return (
     <Box
       sx={{
@@ -14,8 +16,10 @@ const SquareImage = ({ src, alt, size }: ImageParams) => {
         aspectRatio: "1 / 1",
         overflow: "hidden",
         borderRadius: 2,
+        position: "relative",
       }}
     >
+      <FavoriteButton id={id} />
       <Box
         component="img"
         src={src}

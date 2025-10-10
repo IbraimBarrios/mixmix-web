@@ -108,6 +108,7 @@ const DrinkDetail = () => {
           }}
         >
           <SquareImage
+            id={drink.idDrink}
             alt={drink?.strDrink || "image"}
             src={drink?.strDrinkThumb || ""}
             size={{ xs: 320, sm: 320, md: 400 }}
