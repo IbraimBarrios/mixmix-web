@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import FavoriteButton from "../FavoriteButton";
 
 type DrinkCardParams = {
   id: string;
@@ -24,8 +25,10 @@ const DrinkCard = ({ id, src, alt, name, onDrinkClick }: DrinkCardParams) => {
           aspectRatio: "1 / 1",
           overflow: "hidden",
           borderRadius: 2,
+          position: "relative",
         }}
       >
+        <FavoriteButton id={id} />
         <Box
           component="img"
           src={src}
