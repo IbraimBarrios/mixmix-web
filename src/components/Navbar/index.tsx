@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { Box, Button } from "@mui/material";
 import LogoMixmix from "../LogoMixmix";
 import useScroll from "../../hooks/useScroll";
+import NavDrawer from "../NavDawer";
 
 const Navbar = () => {
   const { scrolled } = useScroll();
@@ -19,12 +20,26 @@ const Navbar = () => {
       }}
     >
       <Box className={styles.navbarContainer}>
-        <LogoMixmix />
-        <Box component="div" className={styles.navLinks}>
-          <Link className={styles.link} to="categories">
+        <NavDrawer />
+        <Box
+          sx={{
+            flexGrow: 1,
+            display: "flex",
+            justifyContent: { xs: "center", md: "flex-start" },
+            alignItems: "center",
+          }}
+        >
+          <LogoMixmix />
+        </Box>
+        <Box
+          component="div"
+          className={styles.navLinks}
+          sx={{ display: { xs: "none", md: "block" } }}
+        >
+          <Link className={styles.link} to="/categories">
             Categorias
           </Link>
-          <Link className={styles.link} to="favorites">
+          <Link className={styles.link} to="/favorites">
             Favoritos
           </Link>
           <Button
