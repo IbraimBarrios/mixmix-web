@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { FAVORITE_DRINKS_STORAGE_KEY } from "../utils/constants";
-
-const getFavoriteDrinks = () => {
-  const storage = localStorage.getItem(FAVORITE_DRINKS_STORAGE_KEY);
-
-  return storage ? JSON.parse(storage) : [];
-};
+import { getFavoriteDrinks } from "../utils/utils";
 
 const checkIsFavoriteDrink = (idDrink: string) => {
   const favoriteDrinks = getFavoriteDrinks();
