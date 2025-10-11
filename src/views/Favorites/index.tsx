@@ -8,6 +8,7 @@ import ResponsiveGrid from "../../components/ResponsiveGrid";
 import DrinkCard from "../../components/DrinkCard";
 import RequestErrorMessage from "../../components/RequestErrorMessage";
 import EmptyResultsMessage from "../../components/EmptyResultsMessage";
+import SkeletonFavorites from "../../skeletons/SkeletonFavorites";
 
 const Favorites = () => {
   const navigate = useNavigate();
@@ -55,7 +56,7 @@ const Favorites = () => {
     fetchFavorites();
   }, []);
 
-  if (loading) return <Box>Cargando...</Box>;
+  if (loading) return <SkeletonFavorites />;
   if (error)
     return <RequestErrorMessage text="Error al solicitar bebidas favoritas" />;
 

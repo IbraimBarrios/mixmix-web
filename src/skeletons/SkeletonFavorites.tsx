@@ -1,21 +1,21 @@
 import { Box, Skeleton } from "@mui/material";
 import SkeletonDrinkCard from "./SkeletonDrinkCard";
 
-const SkeletonCategory = () => {
+const SkeletonFavorites = () => {
   return (
     <Box>
-      <Box marginTop="2rem" marginBottom="1rem">
+      <Box paddingBottom="1rem">
         <Skeleton
           variant="text"
           sx={{
             fontSize: "1.5rem",
-            width: { xs: "30%", md: "20%" },
+            width: { xs: "40%", sm: "45%", md: "30%" },
           }}
         />
       </Box>
-      <SkeletonDrinkCard numberItems={8} />
+      <SkeletonDrinkCard numberItems={6} />
     </Box>
   );
 };
 
-export default SkeletonCategory;
+export default SkeletonFavorites;
