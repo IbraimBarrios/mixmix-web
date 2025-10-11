@@ -111,7 +111,7 @@ const DrinkDetail = () => {
             id={drink.idDrink}
             alt={drink?.strDrink || "image"}
             src={drink?.strDrinkThumb || ""}
-            size={{ xs: 320, sm: 320, md: 400 }}
+            size={{ xs: 320, sm: 400, md: 400 }}
           />
         </Box>
       </Box>

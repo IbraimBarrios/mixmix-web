@@ -31,13 +31,19 @@ const CocktailRandom = ({
     return <EmptyResultsMessage text="No se encontró ningún cóctel" />;
 
   return (
-    <Stack direction={{ xs: "column", sm: "row" }} spacing={{ xs: 4, sm: 2 }}>
-      <Box flex={1}>
+    <Stack direction={{ xs: "column", md: "row" }} spacing={{ xs: 4, sm: 2 }}>
+      <Box
+        flex={1}
+        sx={{
+          display: "flex",
+          justifyContent: { xs: "center", sm: "center", md: "flex-start" },
+        }}
+      >
         <SquareImage
           id={drink.idDrink}
           alt={drink.strDrink}
           src={drink.strDrinkThumb}
-          size={{ xs: 320, sm: 320, md: 400 }}
+          size={{ xs: 320, sm: 400, md: 400 }}
         />
       </Box>
       <Box flex={1}>
