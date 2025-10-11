@@ -17,7 +17,7 @@ const EmptyResultsMessage = ({ text }: EmptyResultsMessageProps) => {
       }}
     >
       <InfoOutlineIcon sx={{ color: "#2a94d5" }} fontSize="medium" />
-      <Typography ml="0.5rem">Opss.. {text}</Typography>
+      <Typography ml="0.5rem">{text}</Typography>
     </Box>
   );
 };
