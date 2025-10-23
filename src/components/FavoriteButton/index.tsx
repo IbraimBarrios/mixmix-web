@@ -20,7 +20,13 @@ const FavoriteButton = ({ id }: FavoriteButtonProps) => {
       <IconButton
         aria-label="favorite"
         size="small"
-        sx={{ position: "absolute", top: 10, right: 10, color: "#f44337" }}
+        sx={{
+          position: "absolute",
+          top: 10,
+          right: 10,
+          backgroundColor: "white",
+          color: isFavoriteDrink ? "red" : "black",
+        }}
         onClick={handleFavoriteClick}
       >
         {isFavoriteDrink ? <FavoriteIcon /> : <FavoriteBorderIcon />}
