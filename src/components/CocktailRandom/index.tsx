@@ -54,9 +54,7 @@ const CocktailRandom = ({
           <Typography variant="body2" color="textSecondary">
             {drink.strCategory}
           </Typography>
-          <Typography variant="body2" color="textSecondary">
-            {drink.strInstructionsES}
-          </Typography>
+          <Typography variant="body2">{drink.strInstructionsES}</Typography>
           <Button
             onClick={handleSeeDetailsClick}
             variant="contained"
