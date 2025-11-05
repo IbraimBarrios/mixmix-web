@@ -54,7 +54,20 @@ const CocktailRandom = ({
           <Typography variant="body2" color="textSecondary">
             {drink.strCategory}
           </Typography>
-          <Typography variant="body2">{drink.strInstructionsES}</Typography>
+          {drink.strInstructionsES ? (
+            <Typography
+              variant="body1"
+              sx={{
+                display: "-webkit-box",
+                WebkitLineClamp: 8,
+                WebkitBoxOrient: "vertical",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
+              {drink.strInstructionsES}
+            </Typography>
+          ) : null}
           <Button
             onClick={handleSeeDetailsClick}
             variant="contained"
