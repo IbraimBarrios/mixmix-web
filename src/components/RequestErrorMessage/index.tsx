@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 type RequestErrorMessageProps = {
@@ -7,20 +7,17 @@ type RequestErrorMessageProps = {
 
 const RequestErrorMessage = ({ text }: RequestErrorMessageProps) => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        height: 200,
-      }}
+    <Stack
+      direction="row"
+      spacing={1}
+      alignItems="center"
+      justifyContent="center"
     >
       <ErrorOutlineIcon fontSize="medium" color="error" />
-      <Typography ml="0.5rem" color="error">
+      <Typography variant="body1" color="error">
         {text ? text : "Error de solicitud"}
       </Typography>
-    </Box>
+    </Stack>
   );
 };
 
