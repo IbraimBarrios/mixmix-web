@@ -35,7 +35,11 @@ const Navbar = () => {
         <Box
           component="div"
           className={styles.navLinks}
-          sx={{ display: { xs: "none", md: "flex" } }}
+          sx={{
+            display: { xs: "none", md: "flex" },
+            alignItems: { md: "center" },
+            justifyContent: { md: "center" },
+          }}
         >
           <TextField
             id="search"
