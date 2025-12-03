@@ -1,9 +1,10 @@
 import styles from "./Navbar.module.css";
 import { Link } from "react-router";
-import { Box, Button } from "@mui/material";
+import { Box, Button, InputAdornment, TextField } from "@mui/material";
 import LogoMixmix from "../LogoMixmix";
 import useScroll from "../../hooks/useScroll";
 import NavDrawer from "../NavDawer";
+import SearchIcon from "@mui/icons-material/Search";
 
 const Navbar = () => {
   const { scrolled } = useScroll();
@@ -34,8 +35,23 @@ const Navbar = () => {
         <Box
           component="div"
           className={styles.navLinks}
-          sx={{ display: { xs: "none", md: "block" } }}
+          sx={{ display: { xs: "none", md: "flex" } }}
         >
+          <TextField
+            id="search"
+            placeholder="Buscar..."
+            variant="outlined"
+            size="small"
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              },
+            }}
+          />
           <Link className={styles.link} to="/categories">
             Categorias
           </Link>
