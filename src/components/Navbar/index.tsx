@@ -1,13 +1,30 @@
-import styles from "./Navbar.module.css";
-import { Link } from "react-router";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router";
 import { Box, Button, InputAdornment, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import styles from "./Navbar.module.css";
 import LogoMixmix from "../LogoMixmix";
 import useScroll from "../../hooks/useScroll";
 import NavDrawer from "../NavDawer";
-import SearchIcon from "@mui/icons-material/Search";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const { scrolled } = useScroll();
+  const [search, setSearch] = useState<string>("");
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(event.target.value);
+  };
+
+  const handleInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      const encodedSearch = encodeURIComponent(search.trim());
+      if (encodedSearch) {
+        navigate(`/search?s=${search}`);
+        setSearch("");
+      }
+    }
+  };
 
   return (
     <Box
@@ -46,6 +63,9 @@ const Navbar = () => {
             placeholder="Buscar..."
             variant="outlined"
             size="small"
+            value={search}
+            onChange={handleInputChange}
+            onKeyDown={handleInputKeyDown}
             slotProps={{
               input: {
                 startAdornment: (
