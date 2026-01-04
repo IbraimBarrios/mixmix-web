@@ -6,6 +6,7 @@ import type { Drink } from "../../types/drink";
 import useCocktailData from "../../hooks/useCocktailsData";
 import ResponsiveGrid from "../../components/ResponsiveGrid";
 import DrinkCard from "../../components/DrinkCard";
+import EmptyResultsMessage from "../../components/EmptyResultsMessage";
 
 type SearchResponse = {
   drinks: Drink[];
@@ -36,19 +37,25 @@ const Search = () => {
       <Typography variant="h6" fontWeight="bold" paddingBottom="1rem">
         Explorar cócteles
       </Typography>
-      <ResponsiveGrid
-        items={drinks}
-        perRow={{ xs: 2, sm: 8 / 3, md: 3 }}
-        renderItem={(item) => (
-          <DrinkCard
-            id={item.idDrink}
-            alt={item.strDrink}
-            src={item.strDrinkThumb}
-            name={item.strDrink}
-            onDrinkClick={handleDrinkClick}
-          />
-        )}
-      />
+      {drinks.length > 0 ? (
+        <ResponsiveGrid
+          items={drinks}
+          perRow={{ xs: 2, sm: 8 / 3, md: 3 }}
+          renderItem={(item) => (
+            <DrinkCard
+              id={item.idDrink}
+              alt={item.strDrink}
+              src={item.strDrinkThumb}
+              name={item.strDrink}
+              onDrinkClick={handleDrinkClick}
+            />
+          )}
+        />
+      ) : (
+        <EmptyResultsMessage
+          text={`No se encontraron resultados al buscar: ${searchTerm}`}
+        />
+      )}
     </>
   );
 };
