@@ -7,9 +7,10 @@ import useCocktailData from "../../hooks/useCocktailsData";
 import ResponsiveGrid from "../../components/ResponsiveGrid";
 import DrinkCard from "../../components/DrinkCard";
 import EmptyResultsMessage from "../../components/EmptyResultsMessage";
+import RequestErrorMessage from "../../components/RequestErrorMessage";
 
 type SearchResponse = {
-  drinks: Drink[];
+  drinks: Drink[] | null | "no data found";
 };
 
 const Search = () => {
@@ -17,7 +18,7 @@ const Search = () => {
   const [searchParams] = useSearchParams();
   const searchTerm = searchParams.get("s");
 
-  const { data, fetchData } = useCocktailData<SearchResponse>();
+  const { data, error, fetchData } = useCocktailData<SearchResponse>();
 
   const handleDrinkClick = useCallback(
     (id: string) => {
@@ -31,6 +32,8 @@ const Search = () => {
   useEffect(() => {
     fetchData(`${API_BASE_V1}/search.php?s=${searchTerm}`);
   }, [searchTerm]);
+
+  if (error || drinks === "no data found") return <RequestErrorMessage />;
 
   return (
     <>
