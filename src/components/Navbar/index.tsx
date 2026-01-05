@@ -1,12 +1,30 @@
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router";
+import { Box, Button, InputAdornment, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import styles from "./Navbar.module.css";
-import { Link } from "react-router";
-import { Box, Button } from "@mui/material";
 import LogoMixmix from "../LogoMixmix";
 import useScroll from "../../hooks/useScroll";
 import NavDrawer from "../NavDawer";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const { scrolled } = useScroll();
+  const [search, setSearch] = useState<string>("");
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(event.target.value);
+  };
+
+  const handleInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      const encodedSearch = encodeURIComponent(search.trim());
+      if (encodedSearch) {
+        navigate(`/search?s=${search}`);
+        setSearch("");
+      }
+    }
+  };
 
   return (
     <Box
@@ -34,8 +52,30 @@ const Navbar = () => {
         <Box
           component="div"
           className={styles.navLinks}
-          sx={{ display: { xs: "none", md: "block" } }}
+          sx={{
+            display: { xs: "none", md: "flex" },
+            alignItems: { md: "center" },
+            justifyContent: { md: "center" },
+          }}
         >
+          <TextField
+            id="search"
+            placeholder="Buscar..."
+            variant="outlined"
+            size="small"
+            value={search}
+            onChange={handleInputChange}
+            onKeyDown={handleInputKeyDown}
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              },
+            }}
+          />
           <Link className={styles.link} to="/categories">
             Categorias
           </Link>

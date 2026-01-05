@@ -7,6 +7,7 @@ import Error404 from "../views/Error404";
 import DrinkDetail from "../views/DrinkDetail";
 import Categories from "../views/Categories";
 import Category from "../views/Category";
+import Search from "../views/Search";
 
 const router = createBrowserRouter([
   {
@@ -16,8 +17,9 @@ const router = createBrowserRouter([
       { index: true, Component: Home },
       { path: "drink/:drinkId", Component: DrinkDetail },
       { path: "categories", Component: Categories },
-      {path: "categories/:categoryName", Component: Category},
+      { path: "categories/:categoryName", Component: Category },
       { path: "favorites", Component: Favorites },
+      { path: "search", Component: Search },
       { path: "jokes", Component: Jokes },
       { path: "*", Component: Error404 },
     ],
