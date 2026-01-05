@@ -8,6 +8,7 @@ import ResponsiveGrid from "../../components/ResponsiveGrid";
 import DrinkCard from "../../components/DrinkCard";
 import EmptyResultsMessage from "../../components/EmptyResultsMessage";
 import RequestErrorMessage from "../../components/RequestErrorMessage";
+import SkeletonSearch from "../../skeletons/SkeletonSearch";
 
 type SearchResponse = {
   drinks: Drink[] | null | "no data found";
@@ -18,7 +19,8 @@ const Search = () => {
   const [searchParams] = useSearchParams();
   const searchTerm = searchParams.get("s");
 
-  const { data, error, fetchData } = useCocktailData<SearchResponse>();
+  const { data, error, isLoading, fetchData } =
+    useCocktailData<SearchResponse>();
 
   const handleDrinkClick = useCallback(
     (id: string) => {
@@ -32,6 +34,8 @@ const Search = () => {
   useEffect(() => {
     fetchData(`${API_BASE_V1}/search.php?s=${searchTerm}`);
   }, [searchTerm]);
+
+  if (isLoading) return <SkeletonSearch />;
 
   if (error || drinks === "no data found") return <RequestErrorMessage />;
 
