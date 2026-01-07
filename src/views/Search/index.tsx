@@ -29,7 +29,7 @@ const Search = () => {
     [navigate]
   );
 
-  const drinks = useMemo(() => data?.drinks || [], [data?.drinks]);
+  const drinks = useMemo(() => data?.drinks, [data?.drinks]);
 
   useEffect(() => {
     fetchData(`${API_BASE_V1}/search.php?s=${searchTerm}`);
@@ -37,7 +37,12 @@ const Search = () => {
 
   if (isLoading) return <SkeletonSearch />;
 
-  if (error || drinks === "no data found") return <RequestErrorMessage />;
+  if (error) return <RequestErrorMessage />;
+
+  if (!drinks || drinks === "no data found")
+    return (
+      <EmptyResultsMessage text="No se encontraron resultados en la busqueda" />
+    );
 
   return (
     <>
