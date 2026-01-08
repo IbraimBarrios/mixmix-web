@@ -3,7 +3,7 @@ import OrdinaryDrink from "../assets/ordinary-drink.png";
 import Punch from "../assets/punch.png";
 import Shake from "../assets/shake.png";
 import Other from "../assets/other.png";
-import Shot from "../assets/other.png";
+import Shot from "../assets/shot.png";
 import Beer from "../assets/beer.png";
 import CoffeTea from "../assets/coffe-tea.png";
 import Cocoa from "../assets/cocoa.png";
