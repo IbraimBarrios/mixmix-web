@@ -8,6 +8,7 @@ import Beer from "../assets/beer.png";
 import CoffeTea from "../assets/coffe-tea.png";
 import Cocoa from "../assets/cocoa.png";
 import HomemadeLiqueur from "../assets/homemade-liqueur.png";
+import SoftDrink from "../assets/soft-drink.png";
 
 export const All_CATEGORIES = {
   categories: [
@@ -53,6 +54,7 @@ export const All_CATEGORIES = {
     },
     {
       name: "Soft Drink",
+      url: `${SoftDrink}`,
     },
   ],
 };
