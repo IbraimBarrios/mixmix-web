@@ -5,6 +5,7 @@ import Shake from "../assets/shake.png";
 import Other from "../assets/other.png";
 import Shot from "../assets/other.png";
 import Beer from "../assets/beer.png";
+import CoffeTea from "../assets/coffe-tea.png";
 
 export const All_CATEGORIES = {
   categories: [
@@ -37,6 +38,7 @@ export const All_CATEGORIES = {
     },
     {
       name: "Coffee / Tea",
+      url: `${CoffeTea}`,
     },
     {
       name: "Homemade Liqueur",
