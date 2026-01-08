@@ -6,6 +6,7 @@ import Other from "../assets/other.png";
 import Shot from "../assets/other.png";
 import Beer from "../assets/beer.png";
 import CoffeTea from "../assets/coffe-tea.png";
+import Cocoa from "../assets/cocoa.png";
 
 export const All_CATEGORIES = {
   categories: [
@@ -31,6 +32,7 @@ export const All_CATEGORIES = {
     },
     {
       name: "Cocoa",
+      url: `${Cocoa}`,
     },
     {
       name: "Shot",
