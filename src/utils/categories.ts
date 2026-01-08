@@ -7,6 +7,7 @@ import Shot from "../assets/shot.png";
 import Beer from "../assets/beer.png";
 import CoffeTea from "../assets/coffe-tea.png";
 import Cocoa from "../assets/cocoa.png";
+import HomemadeLiqueur from "../assets/homemade-liqueur.png";
 
 export const All_CATEGORIES = {
   categories: [
@@ -44,6 +45,7 @@ export const All_CATEGORIES = {
     },
     {
       name: "Homemade Liqueur",
+      url: `${HomemadeLiqueur}`,
     },
     {
       name: "Beer",
